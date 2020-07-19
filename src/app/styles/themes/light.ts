@@ -6,10 +6,10 @@ export default {
   unit,
 
   colors: {
-    primary: '#e63946',
+    primary: '#F83135',
     secundary: '#a8dadc',
     tertiary: '#1d3557',
-    background: '#f1faee',
+    background: '#D7E1EE',
     text: '#000000',
     subtext: '#000000',
     title: '#000000',

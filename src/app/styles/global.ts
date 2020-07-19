@@ -18,6 +18,16 @@ export default createGlobalStyle`
         background: ${(props: Props) => props.theme.colors.background};
     }
 
+    #root, body, html {
+        height: 100%;
+    }
+
+    #root{
+        max-width: 1080px;
+        height: 100%;
+        margin: 0 auto;   
+    }
+
     h1, h2, h3, h4, h5, h6 {
         color: ${(props: Props) => props.theme.colors.title};
         font-family: Ubuntu;
@@ -41,17 +51,5 @@ export default createGlobalStyle`
 
     button {
         cursor: pointer;
-    }
-
-    /* #root, body, html {
-        height: 100%;
-    }
-    
-    #root {
-        max-width: 960px;
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    */
+    }    
 `;

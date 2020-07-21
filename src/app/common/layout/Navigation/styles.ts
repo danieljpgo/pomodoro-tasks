@@ -7,6 +7,6 @@ export const Container = styled.div`
 export const Main = styled.main`
   height: calc(100% - 80px);
   display: flex;
-  flex-direction: column;
-  /* justify-content: space-around; */
+  justify-content: space-around;
+  /* flex-direction: column; */
 `;

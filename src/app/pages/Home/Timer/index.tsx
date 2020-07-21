@@ -1,7 +1,10 @@
 import React from 'react';
+import { Container } from './styles';
 
-// import { Container } from './styles';
-
-const Timer: React.FC = () => <div>Timer</div>;
+const Timer: React.FC = () => (
+  <Container>
+    Timer
+  </Container>
+);
 
 export default Timer;

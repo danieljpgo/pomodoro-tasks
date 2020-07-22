@@ -1,29 +1,38 @@
-import { Reducer } from 'redux';
-import { Task, DispatchAction } from './types';
+import {
+  Task,
+  TasksActionTypes,
+} from './types';
 
-enum types {
+export enum types {
   ADD_TASK = 'ADD_TASK',
+  REMOVE_TASK = 'REMOVE_TASK',
   TOGGLE_TASK = 'TOGGLE_TASK',
 }
 
-const INITIAL_STATE: Task[] = [];
+const initialState: Task[] = [];
 
-const reducer: Reducer<Task[], DispatchAction> = (state = INITIAL_STATE, action) => {
+const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
   switch (action.type) {
     case types.ADD_TASK:
       return [
         ...state, {
-          id: action.payload.id,
-          text: action.payload.text,
+          id: `_${Math.random().toString(36).substr(2, 9)}`, // @TODO Função para retornar uma geração de ID,
           completed: false,
+          text: action.payload.text,
         },
       ];
+
+    case types.REMOVE_TASK:
+      return [
+        ...state.filter((task) => task.id !== action.payload.id),
+      ];
+
     case types.TOGGLE_TASK:
-      return state.map((task) => (
-        task.id === action.payload.id
+      return [
+        ...state.map((task) => ((task.id === action.payload.id)
           ? { ...task, completed: !task.completed }
-          : task
-      ));
+          : task)),
+      ];
 
     default:
       return state;
@@ -31,19 +40,23 @@ const reducer: Reducer<Task[], DispatchAction> = (state = INITIAL_STATE, action)
 };
 
 export const actions = {
-  addTask: (text: string) => ({
+  addTask: (text: string): TasksActionTypes => ({
     type: types.ADD_TASK,
     payload: {
-      id: `_${Math.random().toString(36).substr(2, 9)}`,
       text,
     },
   }),
-  toggleTask: (id: string) => ({
+  removeTask: (id: string): TasksActionTypes => ({
+    type: types.REMOVE_TASK,
+    payload: {
+      id,
+    },
+  }),
+  toggleTask: (id: string): TasksActionTypes => ({
     type: types.TOGGLE_TASK,
     payload: {
       id,
     },
-
   }),
 };
 

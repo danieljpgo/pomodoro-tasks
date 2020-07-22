@@ -3,7 +3,7 @@ import rootReducer from '../reducers';
 import { Task } from '../../pages/Home/Tasks/types';
 
 export interface ApplicationState {
-  tasks: Task[]
+  tasks: Task
 }
 
 const store: Store<ApplicationState> = createStore(rootReducer);

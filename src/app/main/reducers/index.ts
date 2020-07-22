@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
 import tasksReducer from '../../pages/Home/Tasks/reducer';
 
-export default combineReducers({
+const rootReducer = combineReducers({
   tasks: tasksReducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>
+
+export default rootReducer;

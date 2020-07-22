@@ -1,4 +1,4 @@
-import { Action } from 'redux';
+import { types } from './reducer';
 
 export interface Task {
   readonly id: string,
@@ -6,6 +6,25 @@ export interface Task {
   readonly completed: boolean,
 }
 
-export interface DispatchAction extends Action {
-  payload: Task,
+interface AddTaskAction {
+  type: typeof types.ADD_TASK,
+  payload: {
+    text: string
+  },
 }
+
+interface RemoveTaskAction {
+  type: typeof types.REMOVE_TASK,
+  payload: {
+    id: string,
+  }
+}
+
+interface ToggleTaskAction {
+  type: typeof types.TOGGLE_TASK,
+  payload: {
+    id: string,
+  }
+}
+
+export type TasksActionTypes = AddTaskAction | RemoveTaskAction | ToggleTaskAction

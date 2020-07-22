@@ -9,7 +9,7 @@ interface Props {
   onRemove: (id: string) => void;
 }
 
-const Card: React.FC<Props> = (props) => {
+const Task: React.FC<Props> = (props) => {
   const {
     id,
     text,
@@ -48,4 +48,4 @@ const Card: React.FC<Props> = (props) => {
   );
 };
 
-export default Card;
+export default Task;

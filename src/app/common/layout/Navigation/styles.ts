@@ -5,8 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  height: calc(100% - 80px);
-  display: flex;
-  justify-content: space-around;
-  /* flex-direction: column; */
+  height: calc(100% - 60px);
+  display: grid;
+  place-items: center;
 `;

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Timer from './Timer';
-import Tasks from './Tasks';
+import Tasks from './TaskManager';
 
 const Home: React.FC = () => (
   <Fragment>

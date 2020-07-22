@@ -1,6 +1,6 @@
 import { createStore, Store } from 'redux';
 import rootReducer from '../reducers';
-import { Task } from '../../pages/Home/Tasks/types';
+import { Task } from '../../pages/Home/TaskManager/types';
 
 export interface ApplicationState {
   tasks: Task

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container } from './styles';
 import { actions } from './reducer';
 import { RootState } from '../../../main/reducers';
-import Card from './Card';
+import TaskList from './TaskList';
 
 const Tasks: React.FC = () => {
   const { tasks } = useSelector((state: RootState) => state);
@@ -23,20 +23,24 @@ const Tasks: React.FC = () => {
     dispatch(actions.removeTask(id));
   }
 
+  const tasksTodo = tasks.filter((task) => !task.completed);
+  const tasksCompleted = tasks.filter((task) => task.completed);
+
   return (
     <Container>
-      <ul>
-        {tasks.map((task) => (
-          <Card
-            key={task.id}
-            id={task.id}
-            text={task.text}
-            completed={task.completed}
-            onToggle={handleToggleTask}
-            onRemove={handleRemoveTask}
-          />
-        ))}
-      </ul>
+      <TaskList
+        title="To Do"
+        tasks={tasksTodo}
+        onToggle={handleToggleTask}
+        onRemove={handleRemoveTask}
+      />
+
+      <TaskList
+        title="Completed"
+        tasks={tasksCompleted}
+        onToggle={handleToggleTask}
+        onRemove={handleRemoveTask}
+      />
       <input onChange={(e) => setText(e.target.value)} />
       <button
         type="button"

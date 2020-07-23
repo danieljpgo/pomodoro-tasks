@@ -6,17 +6,17 @@ export default {
   unit,
 
   colors: {
-    primary: '#F83135',
-    secundary: '#a8dadc',
-    tertiary: '#1d3557',
-    background: '#D7E1EE',
-    text: '#000000',
-    subtext: '#000000',
-    title: '#000000',
+    primary: '#6686B8',
+    secundary: '#39415B',
+    tertiary: '#4760B5',
+    background: '#202225',
+    text: '#ffffff',
+    subtext: '#ffffff',
+    title: '#ffffff',
   },
 
   shapes: {
-    borderRadius: unit,
+    borderRadius: unit / 2,
   },
 
   breakpoints: {

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { Props } from './themes/types';
 
 export default createGlobalStyle`
     * {
@@ -14,8 +13,8 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         margin: 0;
-        color: ${(props: Props) => props.theme.colors.text};
-        background: ${(props: Props) => props.theme.colors.background};
+        color: ${(props) => props.theme.colors.text};
+        background: ${(props) => props.theme.colors.background};
     }
 
     #root, body, html {
@@ -23,7 +22,7 @@ export default createGlobalStyle`
     }
 
     #root{
-        max-width: 1480px;
+        max-width: 1080px;
         height: 100%;
         margin: 0 auto;   
     }
@@ -33,24 +32,24 @@ export default createGlobalStyle`
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: ${(props: Props) => props.theme.colors.title};
+        color: ${(props) => props.theme.colors.title};
         font-family: Ubuntu;
     }
 
     h1 {
-        font-size: ${(props: Props) => props.theme.fontSize.xlarge}px;
+        font-size: ${(props) => props.theme.fontSize.xlarge}px;
     }
 
     h2 {
-        font-size: ${(props: Props) => props.theme.fontSize.large}px;
+        font-size: ${(props) => props.theme.fontSize.large}px;
     }
 
     h3, h4, h5, h6 {
-        font-size: ${(props: Props) => props.theme.fontSize.medium}px;
+        font-size: ${(props) => props.theme.fontSize.medium}px;
     }
 
     span{
-        font-size: ${(props: Props) => props.theme.fontSize.medium}px;
+        font-size: ${(props) => props.theme.fontSize.medium}px;
     }
 
     button {

@@ -12,7 +12,6 @@ const useInterval = (
     savedCallback.current = callback;
   }, [callback]);
 
-  // disabled-eslint-next-line
   useEffect(() => {
     const tick = () => savedCallback.current();
 
@@ -20,7 +19,7 @@ const useInterval = (
       const id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
-    return undefined;
+    return undefined; // @TODO verificar aqui
   }, [delay]);
 };
 

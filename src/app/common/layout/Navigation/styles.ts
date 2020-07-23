@@ -7,5 +7,10 @@ export const Container = styled.div`
 export const Main = styled.main`
   height: calc(100% - 60px);
   display: grid;
-  place-items: center;
+  grid-template-columns: 1fr 1fr;
+
+  justify-items: center;
+  align-content: center;
+
+  grid-gap: ${(props) => props.theme.unit}px;
 `;

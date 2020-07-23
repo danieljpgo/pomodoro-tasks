@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Container } from './styles';
 import useInterval from '../../../common/utils/hooks/use-interval';
+import Stopwatch from './Stopwatch';
+import Button from '../../../common/components/Button/index';
 
 const Timer: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -12,22 +14,25 @@ const Timer: React.FC = () => {
 
   return (
     <Container>
-      <button
+
+      <Stopwatch timer={count} />
+      <Button
         type="button"
+        variants="primary"
         onClick={() => setRun(!run)}
       >
         {run ? 'pause' : 'play'}
-      </button>
-      <button
+      </Button>
+      <Button
         type="button"
+        variants="secundary"
         onClick={() => {
           setCount(0);
           setRun(false);
         }}
       >
         reset
-      </button>
-      <h1>{count}</h1>
+      </Button>
     </Container>
   );
 };

@@ -1,15 +1,4 @@
-export interface Props{
-  theme: Theme,
-}
-
-interface Theme{
-  title: string,
-  unit: number,
-  colors: Colors,
-  shapes: Shapes,
-  breakpoints: Breakpoints,
-  fontSize: FontSize,
-}
+import 'styled-components';
 
 interface Colors{
   primary: string,
@@ -37,4 +26,15 @@ interface FontSize{
   medium: number,
   large: number,
   xlarge: number,
+}
+
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    title: string,
+    unit: number,
+    colors: Colors,
+    shapes: Shapes,
+    breakpoints: Breakpoints,
+    fontSize: FontSize,
+  }
 }

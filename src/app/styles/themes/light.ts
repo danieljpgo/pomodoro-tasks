@@ -10,7 +10,10 @@ export default {
     secundary: '#39415B',
     tertiary: '#4760B5',
     background: '#202225',
-    text: '#ffffff',
+    text: {
+      primary: '#ffffff',
+      secundary: '#4760B5',
+    },
     subtext: '#ffffff',
     title: '#ffffff',
   },

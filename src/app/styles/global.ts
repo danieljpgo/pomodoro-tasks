@@ -13,7 +13,7 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         margin: 0;
-        color: ${(props) => props.theme.colors.text};
+        color: ${(props) => props.theme.colors.text.primary};
         background: ${(props) => props.theme.colors.background};
     }
 

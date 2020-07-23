@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container } from './styles';
+import { Container, ButtonContainer } from './styles';
 import useInterval from '../../../common/utils/hooks/use-interval';
 import Stopwatch from './Stopwatch';
 import Button from '../../../common/components/Button/index';
@@ -14,25 +14,31 @@ const Timer: React.FC = () => {
 
   return (
     <Container>
-
       <Stopwatch timer={count} />
-      <Button
-        type="button"
-        variants="primary"
-        onClick={() => setRun(!run)}
-      >
-        {run ? 'pause' : 'play'}
-      </Button>
-      <Button
-        type="button"
-        variants="secundary"
-        onClick={() => {
-          setCount(0);
-          setRun(false);
-        }}
-      >
-        reset
-      </Button>
+
+      <ButtonContainer>
+        <Button
+          type="button"
+          variantsStyle="secundary"
+          whileHover={{ x: 10 }}
+          whileTap={{ x: 0 }}
+          onClick={() => {
+            setCount(0);
+            setRun(false);
+          }}
+        >
+          Reset
+        </Button>
+        <Button
+          type="button"
+          variantsStyle="primary"
+          whileHover={{ x: 10 }}
+          whileTap={{ x: 0 }}
+          onClick={() => setRun(!run)}
+        >
+          {run ? 'Pause' : 'Play'}
+        </Button>
+      </ButtonContainer>
     </Container>
   );
 };

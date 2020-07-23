@@ -4,7 +4,10 @@ interface Colors{
   primary: string,
   secundary: string,
   tertiary: string,
-  text: string,
+  text: {
+    primary: string,
+    secundary: string,
+  },
   subtext: string,
   title: string,
   background: string,

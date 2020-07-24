@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, Content } from './styles';
 import ProgressBar from './ProgressBar';
 
 interface Props {
@@ -11,10 +11,10 @@ const Stopwatch: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <h1>
-        {timer}
-      </h1>
       <ProgressBar timer={timer} />
+      <Content>
+        <h1>{timer}</h1>
+      </Content>
     </Container>
   );
 };

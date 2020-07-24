@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Container, Svg } from './styles';
+import { Container, SvgTrack, SvgBar } from './styles';
 
 interface Props {
   timer: number,
@@ -36,22 +36,14 @@ const ProgressBar: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <Svg
-        viewBox="0 0 100 100"
-      >
+      <SvgTrack viewBox="0 0 100 100">
         <circle
           cx="50"
           cy="50"
           r={45}
         />
-      </Svg>
-      <Svg
-        viewBox="0 0 100 100"
-        style={{
-          position: 'absolute',
-          transform: 'rotate(-90deg)',
-        }}
-      >
+      </SvgTrack>
+      <SvgBar viewBox="0 0 100 100">
         <motion.circle
           cx="50"
           cy="50"
@@ -62,7 +54,8 @@ const ProgressBar: React.FC<Props> = (props) => {
           initial="hidden"
           animate="show"
         />
-      </Svg>
+      </SvgBar>
+
     </Container>
   );
 };

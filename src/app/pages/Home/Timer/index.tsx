@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, ButtonContainer } from './styles';
 import useInterval from '../../../common/utils/hooks/use-interval';
 import Stopwatch from './Stopwatch';
-import Button from '../../../common/components/Button/index';
+import Button from '../../../styles/components/Button/index';
 
 const Timer: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -19,7 +19,7 @@ const Timer: React.FC = () => {
       <ButtonContainer>
         <Button
           type="button"
-          variantsStyle="secundary"
+          styleVariants="secundary"
           whileHover={{ x: 10 }}
           whileTap={{ x: 0 }}
           onClick={() => {
@@ -31,7 +31,7 @@ const Timer: React.FC = () => {
         </Button>
         <Button
           type="button"
-          variantsStyle="primary"
+          styleVariants="primary"
           whileHover={{ x: 10 }}
           whileTap={{ x: 0 }}
           onClick={() => setRun(!run)}

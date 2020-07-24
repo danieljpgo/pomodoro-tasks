@@ -9,8 +9,8 @@ export const Container = styled.div`
 
   background-color: ${(props) => props.theme.colors.background};
   border-radius: 50%;
-  filter: drop-shadow(8px 12px 8px #00000090);
-  box-shadow: -8px -8px 15px 0px #ffffff10;
+  filter: drop-shadow(8px 8px 8px #00000080);
+  box-shadow: -8px -8px 12px 0px #ffffff10;
 
   position: relative;
 

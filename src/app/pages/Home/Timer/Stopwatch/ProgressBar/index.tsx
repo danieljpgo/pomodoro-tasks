@@ -4,35 +4,15 @@ import { Container, SvgTrack, SvgBar } from './styles';
 
 interface Props {
   timer: number,
+  limit: number,
 }
 
 const ProgressBar: React.FC<Props> = (props) => {
-  const { timer } = props;
+  const { timer, limit } = props;
+  const radius = 45;
 
-  console.log(timer);
-
-  const circumference = Math.ceil(2 * Math.PI * 45);
-
-  const fillPercents = Math.abs(
-    Math.ceil((circumference / 10) * (5 - 10)),
-  );
-
-  const transition = {
-    // duration: 3,
-    // delay: 0.5,
-    // ease: 'easeIn',
-  };
-
-  const variants = {
-    hidden: {
-      strokeDashoffset: circumference,
-      transition,
-    },
-    show: {
-      strokeDashoffset: fillPercents,
-      transition,
-    },
-  };
+  const circumference = Math.ceil(2 * Math.PI * radius);
+  const fillPercents = Math.abs(Math.ceil((circumference / limit) * (timer - limit)));
 
   return (
     <Container>
@@ -40,23 +20,44 @@ const ProgressBar: React.FC<Props> = (props) => {
         <circle
           cx="50"
           cy="50"
-          r={45}
+          r={radius}
         />
       </SvgTrack>
       <SvgBar viewBox="0 0 100 100">
         <motion.circle
           cx="50"
           cy="50"
-          r={45}
+          r={radius}
           strokeDashoffset={fillPercents}
           strokeDasharray={circumference}
-          variants={variants}
-          initial="hidden"
-          animate="show"
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset: fillPercents }}
+          transition={{ duration: 1 }}
         />
       </SvgBar>
-
     </Container>
   );
 };
+
+ProgressBar.defaultProps = {
+  timer: 0,
+  limit: 1500,
+};
+
 export default ProgressBar;
+
+// const transition = {
+//   duration: 1,
+//   ease: 'easeIn',
+// };
+
+// const variants = {
+//   hidden: {
+//     strokeDashoffset: circumference,
+//     transition,
+//   },
+//   show: {
+//     strokeDashoffset: fillPercents,
+//     transition,
+//   },
+// };

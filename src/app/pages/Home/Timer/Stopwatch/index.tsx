@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Content } from './styles';
 import ProgressBar from './ProgressBar';
+import Panel from './Panel';
 
 interface Props {
   timer: number,
@@ -8,8 +9,7 @@ interface Props {
 
 const Stopwatch: React.FC<Props> = (props) => {
   const { timer } = props;
-  const limit = 60;
-  // const limit = 1500;
+  const limit = 1500;
 
   return (
     <Container>
@@ -18,7 +18,7 @@ const Stopwatch: React.FC<Props> = (props) => {
         limit={limit}
       />
       <Content>
-        <h1>{timer}</h1>
+        <Panel timer={timer} />
       </Content>
     </Container>
   );

@@ -5,11 +5,11 @@ import Panel from './Panel';
 
 interface Props {
   timer: number,
+  limit: number,
 }
 
 const Stopwatch: React.FC<Props> = (props) => {
-  const { timer } = props;
-  const limit = 1500;
+  const { timer, limit } = props;
 
   return (
     <Container>
@@ -26,6 +26,7 @@ const Stopwatch: React.FC<Props> = (props) => {
 
 Stopwatch.defaultProps = {
   timer: 0,
+  limit: 0,
 };
 
 export default Stopwatch;

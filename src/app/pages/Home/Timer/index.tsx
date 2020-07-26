@@ -8,13 +8,18 @@ const Timer: React.FC = () => {
   const [count, setCount] = useState(0);
   const [run, setRun] = useState(false);
 
+  const limit = 1500;
+
   useInterval(() => {
     setCount(count + 1);
   }, (run ? 1000 : null));
 
   return (
     <Container>
-      <Stopwatch timer={count} />
+      <Stopwatch
+        timer={count}
+        limit={limit}
+      />
 
       <ButtonContainer>
         <Button
@@ -23,7 +28,7 @@ const Timer: React.FC = () => {
           whileHover={{ x: 10 }}
           whileTap={{ x: 0 }}
           onClick={() => {
-            setCount(0);
+            setCount(1500);
             setRun(false);
           }}
         >

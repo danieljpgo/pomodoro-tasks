@@ -14,4 +14,6 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   position: absolute;
+  display: flex;
+  font-size: ${(props) => props.theme.fontSize.xlarge}px;
 `;

@@ -40,6 +40,5 @@ export const SvgBar = styled.svg`
     stroke: ${(props) => props.theme.colors.tertiary};
     stroke-width: 4.5;
     fill: transparent;
-    /* fill: ${(props) => props.theme.colors.background} */
   }
 `;

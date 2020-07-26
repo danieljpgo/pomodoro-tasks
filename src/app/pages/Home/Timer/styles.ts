@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* display: flex; */
-  /* justify-content: space-evenly; */
-  /* flex-direction: column; */
+  padding: 0 ${(props) => props.theme.unit}px;
 `;
 
 export const ButtonContainer = styled.div`

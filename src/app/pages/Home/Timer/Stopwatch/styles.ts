@@ -5,15 +5,5 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:
-    0
-    ${(props) => props.theme.unit}px
-    ${(props) => props.theme.unit * 2}px
-    ${(props) => props.theme.unit}px;
-`;
-
-export const Content = styled.div`
-  position: absolute;
-  display: flex;
-  font-size: ${(props) => props.theme.fontSize.xlarge}px;
+  margin-bottom: ${(props) => props.theme.unit * 3}px
 `;

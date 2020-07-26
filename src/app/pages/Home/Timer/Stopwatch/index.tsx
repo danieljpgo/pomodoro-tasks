@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content } from './styles';
+import { Container } from './styles';
 import ProgressBar from './ProgressBar';
 import Panel from './Panel';
 
@@ -17,9 +17,7 @@ const Stopwatch: React.FC<Props> = (props) => {
         timer={timer}
         limit={limit}
       />
-      <Content>
-        <Panel timer={timer} />
-      </Content>
+      <Panel timer={timer} />
     </Container>
   );
 };

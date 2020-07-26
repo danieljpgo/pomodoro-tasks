@@ -6,9 +6,8 @@ export default {
   unit,
 
   colors: {
-    primary: '#6686B8',
-    secundary: '#39415B',
-    tertiary: '#4760B5',
+    primary: '#4760B5',
+    secundary: '#39415B40',
     background: '#202225',
     text: {
       primary: '#ffffff',
@@ -19,7 +18,7 @@ export default {
   },
 
   shapes: {
-    borderRadius: unit / 2,
+    borderRadius: unit / 3,
   },
 
   breakpoints: {
@@ -30,7 +29,7 @@ export default {
   },
 
   fontSize: {
-    small: 14,
+    small: 16,
     medium: 26,
     large: 32,
     xlarge: 48,

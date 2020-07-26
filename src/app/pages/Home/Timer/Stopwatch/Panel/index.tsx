@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { Container } from './styles';
 import Digit from './Digit';
 
 interface Props{
@@ -12,13 +13,13 @@ const Panel: React.FC<Props> = (props) => {
   const second = String(timer % 60).padStart(2, '0').split('');
 
   return (
-    <Fragment>
+    <Container>
       <Digit value={minute[0]} />
       <Digit value={minute[1]} />
       <div>:</div>
       <Digit value={second[0]} />
       <Digit value={second[1]} />
-    </Fragment>
+    </Container>
   );
 };
 

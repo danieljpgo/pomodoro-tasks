@@ -5,8 +5,6 @@ interface Props {
   value: string
 }
 
-// @TODO criar um arquivo com as animações
-
 const Digit: React.FC<Props> = (props) => {
   const { value } = props;
 
@@ -16,9 +14,10 @@ const Digit: React.FC<Props> = (props) => {
     >
       <motion.div
         key={value}
-        initial={{ y: -16, rotateX: 90, opacity: 0 }}
+        initial={{ y: -14, rotateX: 90, opacity: 0 }}
         animate={{ y: 0, rotateX: 0, opacity: 1 }}
-        exit={{ y: 16, rotateX: 90, opacity: 0 }}
+        exit={{ y: 14, rotateX: 90, opacity: 0 }}
+        transition={{ duration: 0.2 }}
       >
         {value}
       </motion.div>

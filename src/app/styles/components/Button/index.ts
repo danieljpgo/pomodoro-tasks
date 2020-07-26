@@ -22,8 +22,8 @@ export const Button = styled(motion.button)<Props>`
   font-family: Roboto;
   border: none;
   border-radius: ${(props) => props.theme.shapes.borderRadius}px;
-  padding: ${(props) => props.theme.unit / 2}px;
-  width: 120px;
+  padding: ${(props) => props.theme.unit / 1.6}px ${(props) => props.theme.unit / 2}px;
+  width: 160px;
 
   ${(props) => variants[props.styleVariants]}
 `;

@@ -39,25 +39,11 @@ const ProgressBar: React.FC<Props> = (props) => {
   );
 };
 
+// @TODO Corrigir default props ao trocar os valores do conometro
+
 ProgressBar.defaultProps = {
   timer: 0,
   limit: 1500,
 };
 
 export default ProgressBar;
-
-// const transition = {
-//   duration: 1,
-//   ease: 'easeIn',
-// };
-
-// const variants = {
-//   hidden: {
-//     strokeDashoffset: circumference,
-//     transition,
-//   },
-//   show: {
-//     strokeDashoffset: fillPercents,
-//     transition,
-//   },
-// };

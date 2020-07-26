@@ -34,10 +34,10 @@ export const SvgBar = styled.svg`
   left: 0;
   top: 0;
   transform: rotate(-90deg);
-  circle{    filter: drop-shadow(8px 12px 8px #00000090);
+  circle{    
     position: relative;
     box-shadow: -8px -8px 15px 0px #ffffff10;
-    stroke: ${(props) => props.theme.colors.tertiary};
+    stroke: ${(props) => props.theme.colors.primary};
     stroke-width: 4.5;
     fill: transparent;
   }

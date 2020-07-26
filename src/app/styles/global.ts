@@ -14,7 +14,7 @@ export default createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         margin: 0;
         color: ${(props) => props.theme.colors.text.primary};
-        background: ${(props) => props.theme.colors.background};
+        background: ${(props) => props.theme.colors.background.main};
     }
 
     #root, body, html {
@@ -34,6 +34,7 @@ export default createGlobalStyle`
     h1, h2, h3, h4, h5, h6 {
         color: ${(props) => props.theme.colors.title};
         font-family: Ubuntu;
+        line-height: 1;
     }
 
     h1 {

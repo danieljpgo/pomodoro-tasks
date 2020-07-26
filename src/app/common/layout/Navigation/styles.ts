@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const Main = styled.main`
   height: calc(100% - 60px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: 60vh;
   grid-gap: ${(props) => props.theme.unit}px;
   align-content: center;

@@ -9,7 +9,10 @@ interface Colors{
   },
   subtext: string,
   title: string,
-  background: string,
+  background: {
+    main: string,
+    constrast: string,
+  },
 }
 
 interface Shapes{
@@ -24,6 +27,7 @@ interface Breakpoints{
 }
 
 interface FontSize{
+  xsmall: number,
   small: number,
   medium: number,
   large: number,

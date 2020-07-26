@@ -7,7 +7,7 @@ export const Container = styled.div`
   max-width: 300px;
   max-height: 300px;
 
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors.background.main};
   border-radius: 50%;
   filter: drop-shadow(8px 8px 8px #00000080);
   box-shadow: -8px -8px 12px 0px #ffffff10;
@@ -36,7 +36,6 @@ export const SvgBar = styled.svg`
   transform: rotate(-90deg);
   circle{    
     position: relative;
-    box-shadow: -8px -8px 15px 0px #ffffff10;
     stroke: ${(props) => props.theme.colors.primary};
     stroke-width: 4.5;
     fill: transparent;

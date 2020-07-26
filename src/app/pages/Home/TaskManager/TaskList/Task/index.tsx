@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container } from './styles';
+import {
+  Container, Priority, Text, Info,
+} from './styles';
 
 interface Props {
   id: string,
@@ -28,22 +30,32 @@ const Task: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <button
-        type="button"
-        onClick={() => handleToggle(id)}
-      >
-        toggle
-      </button>
-      <button
-        type="button"
-        onClick={() => handleRemove(id)}
-      >
-        remove
-      </button>
-      <div>
-        {text}
+      <Priority />
+      <Text>
+        <div>{text}</div>
+        <div>0 minutes</div>
+      </Text>
+      <Info>
+        <div>1/4</div>
+        <div>25 min</div>
+      </Info>
+      {/* <div>
+        <button
+          type="button"
+          onClick={() => handleToggle(id)}
+        >
+          toggle
+        </button>
       </div>
-      {completed ? 'true' : 'false'}
+      <div>
+        <button
+          type="button"
+          onClick={() => handleRemove(id)}
+        >
+          remove
+        </button>
+      </div> */}
+      {/* {completed ? 'true' : 'false'} */}
     </Container>
   );
 };

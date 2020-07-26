@@ -8,12 +8,15 @@ export default {
   colors: {
     primary: '#4760B5',
     secundary: '#39415B40',
-    background: '#202225',
+    background: {
+      main: '#202225',
+      constrast: '#27292c',
+    },
     text: {
       primary: '#ffffff',
       secundary: '#4760B5',
     },
-    subtext: '#ffffff',
+    subtext: '#808080',
     title: '#ffffff',
   },
 
@@ -29,6 +32,7 @@ export default {
   },
 
   fontSize: {
+    xsmall: 14,
     small: 16,
     medium: 26,
     large: 32,

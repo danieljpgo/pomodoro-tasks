@@ -17,7 +17,7 @@ const variants = {
   `,
 };
 
-export const Button = styled(motion.button)<Props>`
+export const Container = styled(motion.button)<Props>`
   font-size: ${(props) => props.theme.fontSize.small}px;
   font-family: Roboto;
   border: none;
@@ -28,4 +28,4 @@ export const Button = styled(motion.button)<Props>`
   ${(props) => variants[props.styleVariants]}
 `;
 
-export default Button;
+export default Container;

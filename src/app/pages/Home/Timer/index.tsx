@@ -23,6 +23,8 @@ const Timer: React.FC = () => {
     setRun(false);
   }
 
+  const label = run ? 'Pause' : 'Play';
+
   return (
     <Container>
       <Stopwatch
@@ -40,7 +42,7 @@ const Timer: React.FC = () => {
           styleVariants="primary"
           onClick={() => handleRunTimer(run)}
         >
-          {run ? 'Pause' : 'Play'}
+          {label}
         </Button>
       </ButtonContainer>
     </Container>

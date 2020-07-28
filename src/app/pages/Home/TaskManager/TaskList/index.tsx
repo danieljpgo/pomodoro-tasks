@@ -4,7 +4,6 @@ import { Task } from '../types';
 import TaskContainer from './Task';
 
 interface Props {
-  title: string,
   tasks: Task[]
   onToggle: (id: string) => void,
   onRemove: (id: string) => void,
@@ -12,7 +11,6 @@ interface Props {
 
 const TaskList: React.FC<Props> = (props) => {
   const {
-    title,
     tasks,
     onToggle,
     onRemove,
@@ -20,7 +18,6 @@ const TaskList: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <h2>{title}</h2>
       <List>
         {tasks.map((task) => (
           <TaskContainer

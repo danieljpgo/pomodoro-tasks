@@ -1,3 +1,6 @@
+// Thanks Dan Abramov.
+// https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+
 import { useEffect, useRef } from 'react';
 
 const noop = () => {};
@@ -19,7 +22,7 @@ const useInterval = (
       const id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
-    return undefined; // @TODO verificar aqui
+    return undefined;
   }, [delay]);
 };
 

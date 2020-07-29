@@ -3,11 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AnimateSharedLayout } from 'framer-motion';
 import { actions } from './reducer';
 import { RootState } from '../../../main/reducers';
-import TaskList from './TaskList';
+import List from './List';
 import Button from '../../../common/components/Button';
 import {
   Container,
-  ListContainer,
   TitleContainer,
   Title,
   Underline,
@@ -30,6 +29,10 @@ const Tasks: React.FC = () => {
   const [listSelected, setListSelected] = useState<List>('all');
 
   const dispatch = useDispatch();
+
+  function handleStarTimer(id: string) {
+    console.log(id);
+  }
 
   function handleAddTask() {
     dispatch(actions.addTask());
@@ -68,30 +71,32 @@ const Tasks: React.FC = () => {
           ))}
         </TitleContainer>
       </AnimateSharedLayout>
-      <ListContainer>
+      <div>
         {listSelected === 'all'
           ? (
-            <TaskList
+            <List
               key="all"
               tasks={tasksTodo}
               onToggle={handleToggleTask}
               onRemove={handleRemoveTask}
+              onStarTimer={handleStarTimer}
             />
           )
           : (
-            <TaskList
+            <List
               key="completed"
               tasks={tasksCompleted}
               onToggle={handleToggleTask}
               onRemove={handleRemoveTask}
+              onStarTimer={handleStarTimer} // @TODO remover função não necessaria
             />
           )}
-      </ListContainer>
+      </div>
       <Button
         styleVariants="primary"
         onClick={() => handleAddTask()}
       >
-        + Add
+        Add
       </Button>
     </Container>
   );

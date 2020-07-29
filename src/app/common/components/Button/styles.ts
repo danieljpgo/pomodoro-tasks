@@ -10,7 +10,6 @@ const variants = {
     color: ${(props) => props.theme.colors.text.primary};
     background-color: ${(props) => props.theme.colors.primary};
   `,
-
   secundary: css`
     color: ${(props) => props.theme.colors.text.secundary};
     background-color: ${(props) => props.theme.colors.secundary};

@@ -5,10 +5,18 @@ export interface Task {
   readonly text: string,
   readonly completed: boolean,
   readonly priority: 'hight' | 'medium' | 'low',
+  readonly timer: number,
 }
 
 interface AddTaskAction {
   type: typeof types.ADD_TASK,
+}
+
+interface UpdateTimerTaskAction {
+  type: typeof types.TIMER_TASK,
+  payload: {
+    timer: number,
+  }
 }
 
 interface RemoveTaskAction {
@@ -25,4 +33,6 @@ interface ToggleTaskAction {
   }
 }
 
-export type TasksActionTypes = AddTaskAction | RemoveTaskAction | ToggleTaskAction
+export type TasksActionTypes = (
+  AddTaskAction | RemoveTaskAction | ToggleTaskAction | UpdateTimerTaskAction
+)

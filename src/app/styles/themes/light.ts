@@ -25,6 +25,7 @@ export default {
       medium: colors.yellow[300],
       low: colors.green[700],
     },
+    complete: colors.green[400],
   },
 
   shapes: {

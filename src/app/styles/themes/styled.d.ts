@@ -17,7 +17,8 @@ interface Colors{
     hight: string,
     medium: string,
     low: string,
-  }
+  },
+  complete: string,
 }
 
 interface Shapes{

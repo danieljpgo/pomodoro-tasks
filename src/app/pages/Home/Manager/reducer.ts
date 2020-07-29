@@ -5,6 +5,7 @@ import {
 
 export enum types {
   ADD_TASK = 'ADD_TASK',
+  TIMER_TASK = 'TIMER_TASK',
   REMOVE_TASK = 'REMOVE_TASK',
   TOGGLE_TASK = 'TOGGLE_TASK',
 }
@@ -20,6 +21,7 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
           completed: false,
           text: '',
           priority: 'medium',
+          timer: 0,
         },
       ];
 
@@ -43,6 +45,12 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
 export const actions = {
   addTask: (): TasksActionTypes => ({
     type: types.ADD_TASK,
+  }),
+  timerTask: (timer: number): TasksActionTypes => ({
+    type: types.TIMER_TASK,
+    payload: {
+      timer,
+    },
   }),
   removeTask: (id: string): TasksActionTypes => ({
     type: types.REMOVE_TASK,

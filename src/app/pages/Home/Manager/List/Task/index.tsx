@@ -1,23 +1,33 @@
 import React from 'react';
-import {
-  Container, Priority, Text, Info,
-} from './styles';
 import { Task as TaskProps } from '../../types';
+import {
+  Container,
+  Priority,
+  Text,
+  Info,
+} from './styles';
 
 interface Props extends TaskProps {
   onToggle: (id: string) => void;
   onRemove: (id: string) => void;
+  onStarTimer: (id: string) => void;
 }
 
 const Task: React.FC<Props> = (props) => {
   const {
     id,
     text,
+    timer,
     completed,
     priority,
     onToggle,
     onRemove,
+    onStarTimer,
   } = props;
+
+  function handleStarTimer(idTask: string) {
+    onStarTimer(idTask);
+  }
 
   function handleToggle(idTask: string) {
     onToggle(idTask);
@@ -31,6 +41,7 @@ const Task: React.FC<Props> = (props) => {
     <Container>
       <Priority
         type={priority}
+        completed={completed}
       />
       <Text>
         <div>{text}</div>
@@ -38,27 +49,40 @@ const Task: React.FC<Props> = (props) => {
       </Text>
       <Info>
         <div>1/4</div>
-        <div>25 min</div>
+        <div>{timer}</div>
       </Info>
-      {/* <div>
+      <div>
+        <button
+          type="button"
+          onClick={() => handleStarTimer(id)}
+        >
+          play
+        </button>
         <button
           type="button"
           onClick={() => handleToggle(id)}
         >
           toggle
         </button>
-      </div>
-      <div>
         <button
           type="button"
           onClick={() => handleRemove(id)}
         >
           remove
         </button>
-      </div> */}
-      {/* {completed ? 'true' : 'false'} */}
+      </div>
     </Container>
   );
+};
+
+Task.defaultProps = {
+  id: '',
+  text: '',
+  completed: false,
+  priority: 'medium',
+  onToggle: () => {},
+  onRemove: () => {},
+  onStarTimer: () => {},
 };
 
 export default Task;

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import Timer from './Timer';
-import Tasks from './TaskManager';
+import Manager from './Manager';
 
 const Home: React.FC = () => (
   <Fragment>
     <Timer />
-    <Tasks />
+    <Manager />
   </Fragment>
 );
 

@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AnimateSharedLayout } from 'framer-motion';
 import { actions } from './reducer';
 import { RootState } from '../../../main/reducers';
-import List from './List';
+import TaskList from './List';
 import Button from '../../../common/components/Button';
+import { List, Types } from './types';
 import {
   Container,
   TitleContainer,
@@ -12,17 +13,10 @@ import {
   Underline,
 } from './styles';
 
-interface Types{
-  id: List,
-  title: string,
-}
-
 const types: Types[] = [
   { id: 'all', title: 'All Tasks' },
   { id: 'completed', title: 'Completed' },
 ];
-
-type List = 'all' | 'completed';
 
 const Tasks: React.FC = () => {
   const { tasks } = useSelector((state: RootState) => state);
@@ -74,7 +68,7 @@ const Tasks: React.FC = () => {
       <div>
         {listSelected === 'all'
           ? (
-            <List
+            <TaskList
               key="all"
               tasks={tasksTodo}
               onToggle={handleToggleTask}
@@ -83,7 +77,7 @@ const Tasks: React.FC = () => {
             />
           )
           : (
-            <List
+            <TaskList
               key="completed"
               tasks={tasksCompleted}
               onToggle={handleToggleTask}

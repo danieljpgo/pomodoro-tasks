@@ -1,5 +1,12 @@
 import { types } from './reducer';
 
+export type List = 'all' | 'completed';
+
+export interface Types{
+  id: List,
+  title: string,
+}
+
 export interface Task {
   readonly id: string,
   readonly text: string,

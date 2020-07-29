@@ -8,9 +8,6 @@ export interface Task {
 
 interface AddTaskAction {
   type: typeof types.ADD_TASK,
-  payload: {
-    text: string
-  },
 }
 
 interface RemoveTaskAction {

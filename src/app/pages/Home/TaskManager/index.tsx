@@ -1,23 +1,38 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { motion } from 'framer-motion';
-import { Container, ListContainer, TitleContainer } from './styles';
+import { AnimateSharedLayout } from 'framer-motion';
 import { actions } from './reducer';
 import { RootState } from '../../../main/reducers';
 import TaskList from './TaskList';
 import Button from '../../../common/components/Button';
+import {
+  Container,
+  ListContainer,
+  TitleContainer,
+  Title,
+  Underline,
+} from './styles';
+
+interface Types{
+  id: List,
+  title: string,
+}
+
+const types: Types[] = [
+  { id: 'all', title: 'All Tasks' },
+  { id: 'completed', title: 'Completed' },
+];
 
 type List = 'all' | 'completed';
 
 const Tasks: React.FC = () => {
   const { tasks } = useSelector((state: RootState) => state);
-  const [text, setText] = useState('');
   const [listSelected, setListSelected] = useState<List>('all');
 
   const dispatch = useDispatch();
 
-  function handleAddTask(textTask: string) {
-    dispatch(actions.addTask(textTask));
+  function handleAddTask() {
+    dispatch(actions.addTask());
   }
 
   function handleToggleTask(id: string) {
@@ -37,48 +52,47 @@ const Tasks: React.FC = () => {
 
   return (
     <Container>
-      <TitleContainer>
-        <motion.h2
-          onClick={() => handleListType('all')}
-        >
-          All Tasks
-        </motion.h2>
-        <motion.h2
-          onClick={() => handleListType('completed')}
-        >
-          Completed
-        </motion.h2>
-      </TitleContainer>
+      <AnimateSharedLayout>
+        <TitleContainer>
+          {types.map((type) => (
+            <Title
+              key={type.id}
+              selected={type.id === listSelected}
+              onClick={() => handleListType(type.id)}
+            >
+              {type.title}
+              {type.id === listSelected && (
+                <Underline layoutId="underline" />
+              )}
+            </Title>
+          ))}
+        </TitleContainer>
+      </AnimateSharedLayout>
       <ListContainer>
-        {
-          listSelected === 'all'
-            ? (
-              <TaskList
-                key="all"
-                tasks={tasksTodo}
-                onToggle={handleToggleTask}
-                onRemove={handleRemoveTask}
-              />
-            )
-            : (
-              <TaskList
-                key="completed"
-                tasks={tasksCompleted}
-                onToggle={handleToggleTask}
-                onRemove={handleRemoveTask}
-              />
-            )
-        }
+        {listSelected === 'all'
+          ? (
+            <TaskList
+              key="all"
+              tasks={tasksTodo}
+              onToggle={handleToggleTask}
+              onRemove={handleRemoveTask}
+            />
+          )
+          : (
+            <TaskList
+              key="completed"
+              tasks={tasksCompleted}
+              onToggle={handleToggleTask}
+              onRemove={handleRemoveTask}
+            />
+          )}
       </ListContainer>
-      <div>
-        <input onChange={(e) => setText(e.target.value)} />
-        <Button
-          styleVariants="primary"
-          onClick={() => handleAddTask(text)}
-        >
-          + Add new task
-        </Button>
-      </div>
+      <Button
+        styleVariants="primary"
+        onClick={() => handleAddTask()}
+      >
+        + Add
+      </Button>
     </Container>
   );
 };

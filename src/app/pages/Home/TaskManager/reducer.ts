@@ -18,7 +18,7 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
         ...state, {
           id: `_${Math.random().toString(36).substr(2, 9)}`, // @TODO Função para retornar uma geração de ID,
           completed: false,
-          text: action.payload.text,
+          text: '',
         },
       ];
 
@@ -40,11 +40,8 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
 };
 
 export const actions = {
-  addTask: (text: string): TasksActionTypes => ({
+  addTask: (): TasksActionTypes => ({
     type: types.ADD_TASK,
-    payload: {
-      text,
-    },
   }),
   removeTask: (id: string): TasksActionTypes => ({
     type: types.REMOVE_TASK,

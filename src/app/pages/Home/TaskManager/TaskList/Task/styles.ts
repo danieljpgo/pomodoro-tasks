@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface PriorityProps {
+  type: 'hight' | 'medium' | 'low',
+}
+
 export const Container = styled.li`
   display: grid;
   grid-gap: ${(props) => props.theme.unit}px;
@@ -10,12 +14,12 @@ export const Container = styled.li`
   align-items: center;
 `;
 
-export const Priority = styled.div`
+export const Priority = styled.div<PriorityProps>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: solid 2px #fff;
-  background-color: #ffffff60;
+  border: solid 2px ${(props) => props.theme.colors.priority[props.type]};
+  background-color: ${(props) => props.theme.colors.priority[props.type]}60;
 `;
 
 export const Text = styled.div`

@@ -1,3 +1,5 @@
+import colors from './colors';
+
 export const unit = 16;
 
 export default {
@@ -6,18 +8,23 @@ export default {
   unit,
 
   colors: {
-    primary: '#4760B5',
-    secundary: '#39415B40',
+    primary: colors.blue[400],
+    secundary: colors.blue[800],
     background: {
-      main: '#202225',
-      constrast: '#27292c',
+      main: colors.gray[600],
+      constrast: colors.gray[400],
     },
     text: {
-      primary: '#ffffff',
-      secundary: '#4760B5',
+      primary: colors.white[100],
+      secundary: colors.blue[400],
     },
-    subtext: '#808080',
-    title: '#ffffff',
+    subtext: colors.gray[200],
+    title: colors.white[100],
+    priority: {
+      hight: colors.red[400],
+      medium: colors.yellow[300],
+      low: colors.green[700],
+    },
   },
 
   shapes: {

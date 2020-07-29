@@ -13,6 +13,11 @@ interface Colors{
     main: string,
     constrast: string,
   },
+  priority: {
+    hight: string,
+    medium: string,
+    low: string,
+  }
 }
 
 interface Shapes{

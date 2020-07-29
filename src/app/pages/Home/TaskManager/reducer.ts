@@ -19,6 +19,7 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
           id: `_${Math.random().toString(36).substr(2, 9)}`, // @TODO Função para retornar uma geração de ID,
           completed: false,
           text: '',
+          priority: 'medium',
         },
       ];
 

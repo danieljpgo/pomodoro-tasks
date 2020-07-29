@@ -2,11 +2,9 @@ import React from 'react';
 import {
   Container, Priority, Text, Info,
 } from './styles';
+import { Task as TaskProps } from '../../types';
 
-interface Props {
-  id: string,
-  text: string,
-  completed: boolean,
+interface Props extends TaskProps {
   onToggle: (id: string) => void;
   onRemove: (id: string) => void;
 }
@@ -16,6 +14,7 @@ const Task: React.FC<Props> = (props) => {
     id,
     text,
     completed,
+    priority,
     onToggle,
     onRemove,
   } = props;
@@ -30,7 +29,9 @@ const Task: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <Priority />
+      <Priority
+        type={priority}
+      />
       <Text>
         <div>{text}</div>
         <div>0 minutes</div>

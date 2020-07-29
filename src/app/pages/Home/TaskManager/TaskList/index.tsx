@@ -25,6 +25,7 @@ const TaskList: React.FC<Props> = (props) => {
             id={task.id}
             text={task.text}
             completed={task.completed}
+            priority={task.priority}
             onToggle={onToggle}
             onRemove={onRemove}
           />

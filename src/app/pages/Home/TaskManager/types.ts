@@ -4,6 +4,7 @@ export interface Task {
   readonly id: string,
   readonly text: string,
   readonly completed: boolean,
+  readonly priority: 'hight' | 'medium' | 'low',
 }
 
 interface AddTaskAction {

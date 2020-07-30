@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AnimateSharedLayout } from 'framer-motion';
 import { actions } from './reducer';
 import { RootState } from '../../../main/reducers';
-import TaskList from './List';
 import Button from '../../../common/components/Button';
 import { List, Types } from './types';
+import TaskList from './List';
 import {
   Container,
   TitleContainer,

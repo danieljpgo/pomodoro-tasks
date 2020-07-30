@@ -1,7 +1,4 @@
-import {
-  Task,
-  TasksActionTypes,
-} from './types';
+import { Task, TasksActionTypes } from './types';
 
 export enum types {
   ADD_TASK = 'ADD_TASK',
@@ -24,12 +21,10 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
           timer: 0,
         },
       ];
-
     case types.REMOVE_TASK:
       return [
         ...state.filter((task) => task.id !== action.payload.id),
       ];
-
     case types.TOGGLE_TASK:
       return [
         ...state.map((task) => ((task.id === action.payload.id)

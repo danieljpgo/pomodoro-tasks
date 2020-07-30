@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import { Container, ButtonContainer } from './styles';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../main/reducers';
+import useInterval from '../../../common/utils/hooks/use-interval';
 import Stopwatch from './Stopwatch';
 import Button from '../../../common/components/Button';
-import useInterval from '../../../common/utils/hooks/use-interval';
-
-const limit = 1500; // @TODO remover aqui quando conectado ao redux
+import { Container, ButtonContainer } from './styles';
+import { actions } from './reducer';
 
 const Timer: React.FC = () => {
-  const [count, setCount] = useState(0);
-  const [run, setRun] = useState(false);
+  const { limit, run, value } = useSelector((state: RootState) => state.timer);
+  const [count, setCount] = useState(value);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setCount(value);
+  }, [value]);
 
   useInterval(() => {
     setCount(count + 1);
   }, (run ? 1000 : null));
 
-  function handleRunTimer(runValue: boolean) {
-    setRun(!runValue);
+  function handleRunTimer(countValue: number) {
+    dispatch(run ? actions.pauseTimer(countValue) : actions.startTimer());
   }
 
   function handleResetTimer() {
-    setCount(0);
-    setRun(false);
+    dispatch(actions.stopTimer());
+    if (value === 0) setCount(value);
   }
 
   const label = run ? 'Pause' : 'Play';
@@ -40,7 +46,7 @@ const Timer: React.FC = () => {
         </Button>
         <Button
           styleVariants="primary"
-          onClick={() => handleRunTimer(run)}
+          onClick={() => handleRunTimer(count)}
         >
           {label}
         </Button>

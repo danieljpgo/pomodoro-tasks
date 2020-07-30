@@ -1,4 +1,4 @@
-import { Task, TasksActionTypes } from './types';
+import { Task, TasksAction } from './types';
 
 export enum types {
   ADD_TASK = 'ADD_TASK',
@@ -9,14 +9,14 @@ export enum types {
 
 const initialState: Task[] = [];
 
-const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
+const reducer = (state = initialState, action: TasksAction): Task[] => {
   switch (action.type) {
     case types.ADD_TASK:
       return [
         ...state, {
           id: `_${Math.random().toString(36).substr(2, 9)}`,
           completed: false,
-          text: '',
+          text: 'Untitled',
           priority: 'medium',
           limit: 1500,
           value: 0,
@@ -48,24 +48,24 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
   }
 };
 
-export const actions = {
-  addTask: (): TasksActionTypes => ({
+export const tasksActions = {
+  addTask: (): TasksAction => ({
     type: types.ADD_TASK,
   }),
-  timerTask: (id: string, value: number): TasksActionTypes => ({
+  timerTask: (id: string, value: number): TasksAction => ({
     type: types.TIMER_TASK,
     payload: {
       id,
       value,
     },
   }),
-  removeTask: (id: string): TasksActionTypes => ({
+  removeTask: (id: string): TasksAction => ({
     type: types.REMOVE_TASK,
     payload: {
       id,
     },
   }),
-  toggleTask: (id: string): TasksActionTypes => ({
+  toggleTask: (id: string): TasksAction => ({
     type: types.TOGGLE_TASK,
     payload: {
       id,

@@ -35,7 +35,7 @@ interface ToggleTaskAction {
   }
 }
 
-export type TasksActionTypes = (
+export type TasksAction = (
   AddTaskAction | RemoveTaskAction | ToggleTaskAction | TimerTaskAction
 )
 

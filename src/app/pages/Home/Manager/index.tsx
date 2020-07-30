@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimateSharedLayout } from 'framer-motion';
-import { actions } from './reducer';
-import { actions as timerActions } from '../Timer/reducer';
+import { tasksActions } from './reducer';
+import { timerActions } from '../Timer/reducer';
 import { RootState } from '../../../main/reducers';
-import Button from '../../../common/components/Button';
 import { List, Types } from './types';
+import Button from '../../../common/components/Button';
 import TaskList from './List';
 import {
   Container,
   TitleContainer,
   Title,
   Underline,
+  ListContainer,
 } from './styles';
 
 const types: Types[] = [
@@ -20,25 +21,26 @@ const types: Types[] = [
 ];
 
 const Tasks: React.FC = () => {
-  const tasks = useSelector((state: RootState) => state.tasks);
-  const [listSelected, setListSelected] = useState<List>('all');
-
+  const { tasks } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
+  const [listSelected, setListSelected] = useState<List>('all');
+
   function handleStarTimer(taskId: string, taskValue: number, taskLimit: number) {
+    // if (timer.run) dispatch(timerActions.pauseTimer(timer.taskId, 0)); @TODO Olhar aqui
     dispatch(timerActions.startTimer(taskId, taskValue, taskLimit));
   }
 
   function handleAddTask() {
-    dispatch(actions.addTask());
+    dispatch(tasksActions.addTask());
   }
 
   function handleToggleTask(id: string) {
-    dispatch(actions.toggleTask(id));
+    dispatch(tasksActions.toggleTask(id));
   }
 
   function handleRemoveTask(id: string) {
-    dispatch(actions.removeTask(id));
+    dispatch(tasksActions.removeTask(id));
   }
 
   function handleListType(type: List) {
@@ -66,7 +68,7 @@ const Tasks: React.FC = () => {
           ))}
         </TitleContainer>
       </AnimateSharedLayout>
-      <div>
+      <ListContainer>
         {listSelected === 'all'
           ? (
             <TaskList
@@ -83,10 +85,10 @@ const Tasks: React.FC = () => {
               tasks={tasksCompleted}
               onToggle={handleToggleTask}
               onRemove={handleRemoveTask}
-              onStarTimer={handleStarTimer} // @TODO remover função não necessaria
+              onStarTimer={handleStarTimer}
             />
           )}
-      </div>
+      </ListContainer>
       <Button
         styleVariants="primary"
         onClick={() => handleAddTask()}

@@ -1,4 +1,4 @@
-import { Timer, TimerActionsTypes } from './types';
+import { Timer, TimerActions } from './types';
 
 export enum types {
   START_TIMER = 'START_TIMER',
@@ -13,7 +13,7 @@ const initialState: Timer = {
   run: false,
 };
 
-const reducer = (state = initialState, actions: TimerActionsTypes): Timer => {
+const reducer = (state = initialState, actions: TimerActions): Timer => {
   switch (actions.type) {
     case types.START_TIMER:
       return {
@@ -43,8 +43,8 @@ const reducer = (state = initialState, actions: TimerActionsTypes): Timer => {
   }
 };
 
-export const actions = {
-  startTimer: (taskId: string, value: number, limit: number): TimerActionsTypes => ({
+export const timerActions = {
+  startTimer: (taskId: string, value: number, limit: number): TimerActions => ({
     type: types.START_TIMER,
     payload: {
       taskId,
@@ -52,14 +52,14 @@ export const actions = {
       limit,
     },
   }),
-  pauseTimer: (taskId: string, value: number): TimerActionsTypes => ({
+  pauseTimer: (taskId: string, value: number): TimerActions => ({
     type: types.PAUSE_TIMER,
     payload: {
       taskId,
       value,
     },
   }),
-  stopTimer: (taskId: string): TimerActionsTypes => ({
+  stopTimer: (taskId: string): TimerActions => ({
     type: types.STOP_TIMER,
     payload: {
       taskId,

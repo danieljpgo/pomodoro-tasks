@@ -42,7 +42,7 @@ export const Priority = styled.div<PriorityProps>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: solid 1px;
+  border: solid 2px;
   ${(props) => (props.completed ? variants.completed : variants[props.type])}
 `;
 

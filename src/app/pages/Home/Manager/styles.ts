@@ -35,3 +35,7 @@ export const Underline = styled(motion.div)`
   height: 3px;
   width: 100%;
 `;
+
+export const ListContainer = styled.div`
+  margin-bottom: ${(props) => props.theme.unit}px;
+`;

@@ -5,8 +5,8 @@ import useInterval from '../../../common/utils/hooks/use-interval';
 import Stopwatch from './Stopwatch';
 import Button from '../../../common/components/Button';
 import { Container, ButtonContainer } from './styles';
-import { actions } from './reducer';
-import { actions as tasksActions } from '../Manager/reducer';
+import { timerActions } from './reducer';
+import { tasksActions } from '../Manager/reducer';
 
 const ticker = 1000;
 const defaultCount = 0;
@@ -32,15 +32,15 @@ const Timer: React.FC = () => {
 
   function handleRunTimer(countValue: number) {
     if (run) {
-      dispatch(actions.pauseTimer(taskId, countValue));
+      dispatch(timerActions.pauseTimer(taskId, countValue));
       dispatch(tasksActions.timerTask(taskId, countValue));
     } else {
-      dispatch(actions.startTimer(taskId, value, limit));
+      dispatch(timerActions.startTimer(taskId, value, limit));
     }
   }
 
   function handleResetTimer() {
-    dispatch(actions.stopTimer(taskId));
+    dispatch(timerActions.stopTimer(taskId));
     dispatch(tasksActions.timerTask(taskId, defaultCount));
     if (value === defaultCount) setCount(value);
   }

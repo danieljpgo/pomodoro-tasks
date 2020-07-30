@@ -31,4 +31,4 @@ interface StopAction {
   }
 }
 
-export type TimerActionsTypes = (StartAction | PauseAction | StopAction)
+export type TimerActions = (StartAction | PauseAction | StopAction)

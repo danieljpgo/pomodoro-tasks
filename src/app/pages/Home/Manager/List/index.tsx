@@ -7,7 +7,7 @@ interface Props {
   tasks: TaskType[]
   onToggle: (id: string) => void,
   onRemove: (id: string) => void,
-  onStarTimer: (id: string) => void,
+  onStarTimer: (id: string, value: number, limit: number) => void;
 }
 
 const List: React.FC<Props> = (props) => {
@@ -25,7 +25,8 @@ const List: React.FC<Props> = (props) => {
           key={task.id}
           id={task.id}
           text={task.text}
-          timer={task.timer}
+          value={task.value}
+          limit={task.limit}
           completed={task.completed}
           priority={task.priority}
           onToggle={onToggle}

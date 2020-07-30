@@ -10,14 +10,15 @@ import {
 interface Props extends TaskProps {
   onToggle: (id: string) => void;
   onRemove: (id: string) => void;
-  onStarTimer: (id: string) => void;
+  onStarTimer: (id: string, value: number, limit: number) => void;
 }
 
 const Task: React.FC<Props> = (props) => {
   const {
     id,
     text,
-    timer,
+    limit,
+    value,
     completed,
     priority,
     onToggle,
@@ -25,8 +26,9 @@ const Task: React.FC<Props> = (props) => {
     onStarTimer,
   } = props;
 
-  function handleStarTimer(idTask: string) {
-    onStarTimer(idTask);
+  // @TODO melhorar aqui
+  function handleStarTimer(idTask: string, valueTask: number, limitTask: number) {
+    onStarTimer(idTask, valueTask, limitTask);
   }
 
   function handleToggle(idTask: string) {
@@ -49,12 +51,12 @@ const Task: React.FC<Props> = (props) => {
       </Text>
       <Info>
         <div>1/4</div>
-        <div>{timer}</div>
+        <div>{value}</div>
       </Info>
       <div>
         <button
           type="button"
-          onClick={() => handleStarTimer(id)}
+          onClick={() => handleStarTimer(id, value, limit)}
         >
           play
         </button>

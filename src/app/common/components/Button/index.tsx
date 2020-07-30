@@ -1,21 +1,25 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, boxShadowBase, boxShadowHover } from './styles';
 
 interface Props{
   children: string,
+  disabled?: boolean,
   styleVariants: 'primary' | 'secundary',
   onClick: () => void,
 }
 
-const boxShadowBase = '0 0px 0px 0 rgba(0,0,0,0.14), 0 0px 0px 0 rgba(0,0,0,0.12), 0 0px 0px 0px rgba(0,0,0,0.20)';
-const boxShadowHover = '0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20)';
-
 const Button: React.FC<Props> = (props) => {
-  const { children, styleVariants, onClick } = props;
+  const {
+    children,
+    disabled,
+    styleVariants,
+    onClick,
+  } = props;
 
   return (
     <Container
       type="button"
+      disabled={disabled}
       styleVariants={styleVariants}
       initial={{
         boxShadow: boxShadowBase,
@@ -33,6 +37,12 @@ const Button: React.FC<Props> = (props) => {
       {children}
     </Container>
   );
+};
+
+Button.defaultProps = {
+  disabled: false,
+  styleVariants: 'primary',
+  onClick: () => {},
 };
 
 export default Button;

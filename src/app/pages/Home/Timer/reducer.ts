@@ -7,6 +7,7 @@ export enum types {
 }
 
 const initialState: Timer = {
+  taskId: '',
   value: 0,
   limit: 1500,
   run: false,
@@ -17,18 +18,22 @@ const reducer = (state = initialState, actions: TimerActionsTypes): Timer => {
     case types.START_TIMER:
       return {
         ...state,
+        taskId: actions.payload.taskId,
+        value: actions.payload.value,
+        limit: actions.payload.limit,
         run: true,
       };
     case types.PAUSE_TIMER:
-      console.log(actions);
       return {
         ...state,
-        run: false,
+        taskId: actions.payload.taskId,
         value: actions.payload.value,
+        run: false,
       };
     case types.STOP_TIMER:
       return {
         ...state,
+        taskId: actions.payload.taskId,
         value: 0,
         run: false,
       };
@@ -39,17 +44,26 @@ const reducer = (state = initialState, actions: TimerActionsTypes): Timer => {
 };
 
 export const actions = {
-  startTimer: (): TimerActionsTypes => ({
+  startTimer: (taskId: string, value: number, limit: number): TimerActionsTypes => ({
     type: types.START_TIMER,
+    payload: {
+      taskId,
+      value,
+      limit,
+    },
   }),
-  pauseTimer: (value: number): TimerActionsTypes => ({
+  pauseTimer: (taskId: string, value: number): TimerActionsTypes => ({
     type: types.PAUSE_TIMER,
     payload: {
+      taskId,
       value,
     },
   }),
-  stopTimer: (): TimerActionsTypes => ({
+  stopTimer: (taskId: string): TimerActionsTypes => ({
     type: types.STOP_TIMER,
+    payload: {
+      taskId,
+    },
   }),
 };
 

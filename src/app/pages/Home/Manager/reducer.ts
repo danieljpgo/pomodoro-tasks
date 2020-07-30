@@ -14,12 +14,21 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
     case types.ADD_TASK:
       return [
         ...state, {
-          id: `_${Math.random().toString(36).substr(2, 9)}`, // @TODO Função para retornar uma geração de ID,
+          id: `_${Math.random().toString(36).substr(2, 9)}`,
           completed: false,
           text: '',
           priority: 'medium',
-          timer: 0,
+          limit: 1500,
+          value: 0,
         },
+      ];
+    case types.TIMER_TASK:
+      return [
+        ...state.map((task) => (
+          task.id === action.payload.id
+            ? { ...task, value: action.payload.value }
+            : task
+        )),
       ];
     case types.REMOVE_TASK:
       return [
@@ -27,9 +36,11 @@ const reducer = (state = initialState, action: TasksActionTypes): Task[] => {
       ];
     case types.TOGGLE_TASK:
       return [
-        ...state.map((task) => ((task.id === action.payload.id)
-          ? { ...task, completed: !task.completed }
-          : task)),
+        ...state.map((task) => (
+          task.id === action.payload.id
+            ? { ...task, completed: !task.completed }
+            : task
+        )),
       ];
 
     default:
@@ -41,10 +52,11 @@ export const actions = {
   addTask: (): TasksActionTypes => ({
     type: types.ADD_TASK,
   }),
-  timerTask: (timer: number): TasksActionTypes => ({
+  timerTask: (id: string, value: number): TasksActionTypes => ({
     type: types.TIMER_TASK,
     payload: {
-      timer,
+      id,
+      value,
     },
   }),
   removeTask: (id: string): TasksActionTypes => ({

@@ -6,11 +6,21 @@ import Stopwatch from './Stopwatch';
 import Button from '../../../common/components/Button';
 import { Container, ButtonContainer } from './styles';
 import { actions } from './reducer';
+import { actions as tasksActions } from '../Manager/reducer';
+
+const ticker = 1000;
+const defaultCount = 0;
 
 const Timer: React.FC = () => {
-  const { limit, run, value } = useSelector((state: RootState) => state.timer);
-  const [count, setCount] = useState(value);
+  const {
+    run,
+    value,
+    limit,
+    taskId,
+  } = useSelector((state: RootState) => state.timer);
   const dispatch = useDispatch();
+
+  const [count, setCount] = useState(value);
 
   useEffect(() => {
     setCount(value);
@@ -18,15 +28,21 @@ const Timer: React.FC = () => {
 
   useInterval(() => {
     setCount(count + 1);
-  }, (run ? 1000 : null));
+  }, (run ? ticker : null));
 
   function handleRunTimer(countValue: number) {
-    dispatch(run ? actions.pauseTimer(countValue) : actions.startTimer());
+    if (run) {
+      dispatch(actions.pauseTimer(taskId, countValue));
+      dispatch(tasksActions.timerTask(taskId, countValue));
+    } else {
+      dispatch(actions.startTimer(taskId, value, limit));
+    }
   }
 
   function handleResetTimer() {
-    dispatch(actions.stopTimer());
-    if (value === 0) setCount(value);
+    dispatch(actions.stopTimer(taskId));
+    dispatch(tasksActions.timerTask(taskId, defaultCount));
+    if (value === defaultCount) setCount(value);
   }
 
   const label = run ? 'Pause' : 'Play';

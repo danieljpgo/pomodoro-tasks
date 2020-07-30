@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimateSharedLayout } from 'framer-motion';
 import { actions } from './reducer';
+import { actions as timerActions } from '../Timer/reducer';
 import { RootState } from '../../../main/reducers';
 import Button from '../../../common/components/Button';
 import { List, Types } from './types';
@@ -19,13 +20,13 @@ const types: Types[] = [
 ];
 
 const Tasks: React.FC = () => {
-  const { tasks } = useSelector((state: RootState) => state);
+  const tasks = useSelector((state: RootState) => state.tasks);
   const [listSelected, setListSelected] = useState<List>('all');
 
   const dispatch = useDispatch();
 
-  function handleStarTimer(id: string) {
-    console.log(id);
+  function handleStarTimer(taskId: string, taskValue: number, taskLimit: number) {
+    dispatch(timerActions.startTimer(taskId, taskValue, taskLimit));
   }
 
   function handleAddTask() {

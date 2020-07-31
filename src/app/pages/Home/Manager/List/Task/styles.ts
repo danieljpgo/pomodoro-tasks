@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface PriorityProps {
   type: 'hight' | 'medium' | 'low',
@@ -24,7 +25,7 @@ const variants = {
   `,
 };
 
-export const Container = styled.li`
+export const Container = styled(motion.div)`
   display: grid;
   grid-gap: ${(props) => props.theme.unit}px;
   grid-template-columns: min-content auto 48px 48px;

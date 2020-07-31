@@ -2,6 +2,7 @@ import React from 'react';
 import { Task as TaskType } from '../types';
 import { Container } from './styles';
 import Task from './Task';
+import { usePositionReorder } from '../../../../common/utils/hooks/use-position-reorder';
 
 interface Props {
   tasks: TaskType[]
@@ -18,12 +19,22 @@ const List: React.FC<Props> = (props) => {
     onStarTimer,
   } = props;
 
+  const modTasks = tasks.map((x) => ({
+    ...x,
+    height: 102,
+  }));
+
+  console.log(modTasks);
+  const [order, updatePosition, updateOrder] = usePositionReorder(modTasks);
+
   return (
     <Container>
-      {tasks.map((task) => (
+      {order.map((task: any, index: number) => (
         <Task
           key={task.id}
           id={task.id}
+          index={index}
+          height={task.height}
           text={task.text}
           value={task.value}
           limit={task.limit}
@@ -32,17 +43,12 @@ const List: React.FC<Props> = (props) => {
           onToggle={onToggle}
           onRemove={onRemove}
           onStarTimer={onStarTimer}
+          updateOrder={updateOrder}
+          updatePosition={updatePosition}
         />
       ))}
     </Container>
   );
-};
-
-List.defaultProps = {
-  tasks: [],
-  onToggle: () => {},
-  onRemove: () => {},
-  onStarTimer: () => {},
 };
 
 export default List;
